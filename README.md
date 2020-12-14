@@ -1,29 +1,22 @@
-## Obsidian Plugin Template
+# Discordian Plugin for Obsidian
 
-This templates includes a barebone directory structure for an Obsidian Plugin. Bundling is based on [Rollup.js](https://rollupjs.org/).
+> for tweaking Discordian theme.
 
-**NOTE:** This is not the official template. You can find [the official sample plugin here](https://github.com/obsidianmd/obsidian-sample-plugin). This is a plugin template I customized with a nicer (for me) directory structure and some additional tool (like featuring automatic releases with Github's Actions).
+This plugin accompanies [Discordian Theme](https://github.com/radekkozak/discordian), allowing you to customize the 
+it from the Obsidian Settings panel. 
 
-## How to use it
+This plugin is not required to use Discordian Theme, but **highly recommended**.
 
-You can click on the "Use this template" button above.
+## Contribute
 
-### Enable Github's Actions
+Found some quirks? Want to propose some new functionality? 
+You can easily follow these simple steps:
 
-After you created a new repository, remember to rename the `RENAME.github` to `.github` to enable the GitHub's Actions. Then go in `.github/workflows/release.yml` and change `PLUGIN_NAME` on line 10.
-
-## How to compile the plugin
-
-First, install the dependencies with
-
-```bash
-npm i
-```
-
-Then, you can compile the plugin with:
-
-```bash
-npm run build
-```
-
-This will create a `main.js` file in the project root. That is the entry point of your plugin.
+1. [File an issue](https://github.com/radekkozak/discordian-plugin/issues/new) discussing proposed changes or found bug
+2. If you want to contribute solution on your own please
+    - clone this repo
+    - `npm i` to install dependencies
+    - `npm run dev` to start compilation in watch mode
+    - do your magic
+    - use commit message that best describes changes you've just made. If possible, *link it to relevant issue*  
+3. Wait for my swift response or PR for eventual merge

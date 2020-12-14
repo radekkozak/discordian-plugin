@@ -1,7 +1,11 @@
 {
-  "id": "your-obsidian-plugin",
-  "name": "Obsidian Plugin Template",
-  "description": "A Simple Template for Plugins",
-  "isDesktopOnly": false,
-  "js": "main.js"
+  "id": "discordian-plugin",
+  "name": "Discordian Theme",
+  "version": "0.1.0",
+  "minAppVersion": "0.9.12",
+  "description": "Discordian plugin for tweaking Discordian theme.",
+  "author": "@radekkozak",
+  "authorUrl": "https://github.com/radekkozak",
+  "isDesktopOnly": false
 }
+
