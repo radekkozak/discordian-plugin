@@ -136,6 +136,12 @@ body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root ::-we
   width: 0 !important;
 }
 
+/* in Preview Mode - in contrast to Editor Mode - when hiding scrollbar we need to adjust view by its width */
+body.discordian-writer .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .markdown-preview-view,
+body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .markdown-preview-view {
+  margin-left: -8px !important;
+}
+
 .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webkit-scrollbar,
 body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webkit-scrollbar,
 .workspace-ribbon.mod-left.is-collapsed ~ .mod-root ::-webkit-scrollbar,
