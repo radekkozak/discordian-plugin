@@ -1,25 +1,78 @@
 /*----------------------------------------------------------------
 HIDE VAULT */
 
-body.discordian-vault .nav-folder.mod-root > .nav-folder-title {
-  display: none;
+body.discordian-hide-vault .nav-folder.mod-root > .nav-folder-title {
+  display: none !important;
+}
+
+body.discordian-theme .nav-folder.mod-root > .nav-folder-title {
+  display: block;
 }
 
 /*----------------------------------------------------------------
-HIDE NEW METADATA SECTION */
+HIDE METADATA BLOCK IN PREVIEW */
 
-body.discordian-metadata .markdown-preview-view .markdown-preview-section .frontmatter-container {
+body.discordian-hide-metadata .markdown-preview-view .markdown-preview-section .frontmatter-container {
   display: none !important;
+}
+
+/*----------------------------------------------------------------
+HIDE STATUS BAR */
+
+.discordian-hide-statusbar.theme-dark .status-bar {
+  display: none;
+}
+
+.theme-dark:not(.hider-status):not(.discordian-hide-statusbar) .status-bar {
+  display: flex;
+}
+
+/*----------------------------------------------------------------
+HIDE TITLE BAR */
+
+body.discordian-hide-titlebar .app-container {
+  border-top: 0;
+}
+
+body.discordian-hide-titlebar .titlebar {
+  display: none !important;
+}
+
+body.discordian-hide-titlebar {
+  padding-top: 0 !important;
+}
+
+body.discordian-hide-titlebar .workspace-split.mod-left-split .workspace-tab-header-container {
+  padding-left: 24px;
+}
+
+body.discordian-hide-titlebar .workspace-leaf:first-of-type:last-of-type .view-header {
+  padding-left: 0;
+}
+
+/* unhide */
+
+body:not(.discordian-hide-title-bar) .titlebar {
+  display: flex !important;
+}
+
+body.discordian-theme:not(.discordian-hide-titlebar):not(.is-fullscreen):not(.hider-frameless) {
+  padding-top: 22px !important;
+}
+
+body.discordian-theme:not(.discordian-hide-titlebar):not(.hider-frameless) .workspace-split.mod-left-split .workspace-tab-header-container,
+body.discordian-theme.is-fullscreen .workspace-split.mod-left-split .workspace-tab-header-container {
+  padding-left: 0;
 }
 
 /*----------------------------------------------------------------
 PARAGRAPH FOCUS MODE */
 
-body.discordian-focus-paragraph .CodeMirror-line {
-  opacity: 0.5;
+body.discordian-paragraph-focus .CodeMirror-line {
+  opacity: var(--paragraph-focus-fade);
 }
 
-body.discordian-focus-paragraph .CodeMirror-activeline .CodeMirror-line {
+body.discordian-paragraph-focus .CodeMirror-activeline .CodeMirror-line {
   opacity: 1 !important;
 }
 
@@ -27,40 +80,40 @@ body.discordian-focus-paragraph .CodeMirror-activeline .CodeMirror-line {
 DARK NOTE HEADERS */
 
 body.discordian-dark-enhance:not(.plugin-sliding-panes) .app-container {
-  border-top: 0;
+  /*border-top: 0;*/
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .view-header {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .view-header {
   background-color: var(--background-secondary) !important;
-  height: 30px;
+  height: 32px;
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes)  .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
-body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
+body.discordian-dark-enhance:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
+body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
 body.discordian-dark-enhance:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header::before,
 body.discordian-dark-enhance:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header::before,
 body.discordian-dark-enhance:not(.plugin-sliding-panes) .view-header:before {
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  /*-webkit-box-shadow: none !important;
+  box-shadow: none !important;*/
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header {
   background-color: var(--background-secondary) !important;
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header-title-container:after {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header-title-container:after {
   background: linear-gradient(to right, transparent, var(--background-secondary)) !important
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .view-header-title-container:after {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .view-header-title-container:after {
   background: linear-gradient(to right, transparent, var(--background-secondary)) !important
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .workspace-leaf.mod-active .view-header {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .workspace-leaf.mod-active .view-header {
   background-color: var(--background-secondary) !important;
 }
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer) .workspace-leaf.mod-active .view-header-title-container:after {
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .workspace-leaf.mod-active .view-header-title-container:after {
   background: linear-gradient(to right, transparent, var(--background-secondary)) !important
 }
 
@@ -75,54 +128,58 @@ body.discordian-flat-andy.plugin-sliding-panes .workspace-split.mod-vertical > .
 /*----------------------------------------------------------------
 WRITER MODE (big credits to @kepano) */
 
-body.discordian-writer .workspace-leaf.mod-active .view-header {
+body.discordian-writer-mode .workspace-leaf.mod-active .view-header {
   border-bottom: 0;
   /*border-bottom: 2px solid var(--discord-light-yellow);*/
 }
 
-body.discordian-writer .titlebar {
+/*body.discordian-writer-mode .titlebar {
   display: none;
-}
+}*/
 
-body.discordian-writer {
+/*body:not(.discordian-writer-mode):not(.discordian-hide-titlebar) .titlebar {
+  display: flex;
+}*/
+
+/*body.discordian-writer-mode {
   padding-top: 0 !important;
+}*/
+
+body.discordian-writer-mode .workspace-ribbon.mod-right,
+body.discordian-writer-mode .workspace-ribbon.mod-left {
+  transition: border-color 0s ease-in-out 0s, background-color 0s ease-in-out 0s;
 }
 
-body.discordian-writer .workspace-ribbon.mod-right,
-body.discordian-writer .workspace-ribbon.mod-left {
-  transition:border-color 0s ease-in-out 0s, background-color 0s ease-in-out 0s;
-}
-
-body.discordian-writer .workspace-ribbon.mod-right.is-collapsed,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed {
+body.discordian-writer-mode .workspace-ribbon.mod-right.is-collapsed,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed {
   border-color: transparent;
   background-color: transparent !important;
   transition: border-color 0s ease-in-out 0s, background-color 0s ease-in-out 0s;
 }
 
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed:hover .side-dock-actions,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed:hover .side-dock-settings {
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed:hover .side-dock-actions,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed:hover .side-dock-settings {
   opacity: 1;
   /*transition:opacity 0s ease-in-out;*/
 }
 
-body.discordian-writer .view-action.is-active {
+body.discordian-writer-mode .view-action.is-active {
   opacity: 1;
 }
 
 /* view actions */
 
-body.discordian-writer .view-actions,
-body.discordian-writer .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-actions,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-actions,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed .side-dock-actions,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed .side-dock-settings {
+body.discordian-writer-mode .view-actions,
+body.discordian-writer-mode .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-actions,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-actions,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed .side-dock-actions,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed .side-dock-settings {
   opacity: 0;
   transition: opacity 0.17s ease-in-out;
 }
 
 .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-actions,
-body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-actions,
+body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-actions,
 .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header:hover .view-actions,
 .mod-right.is-collapsed ~ .mod-root .view-header:hover .view-actions {
   opacity: 1;
@@ -131,19 +188,19 @@ body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-he
 
 /* scrollbar */
 
-body.discordian-writer .workspace-ribbon.mod-right.is-collapsed ~ .mod-root ::-webkit-scrollbar,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root ::-webkit-scrollbar {
+body.discordian-writer-mode .workspace-ribbon.mod-right.is-collapsed ~ .mod-root ::-webkit-scrollbar,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed ~ .mod-root ::-webkit-scrollbar {
   width: 0 !important;
 }
 
 /* in Preview Mode - in contrast to Editor Mode - when hiding scrollbar we need to adjust view by its width */
-body.discordian-writer .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .markdown-preview-view,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .markdown-preview-view {
+body.discordian-writer-mode .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .markdown-preview-view,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .markdown-preview-view {
   margin-left: -8px !important;
 }
 
 .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webkit-scrollbar,
-body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webkit-scrollbar,
+body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webkit-scrollbar,
 .workspace-ribbon.mod-left.is-collapsed ~ .mod-root ::-webkit-scrollbar,
 .mod-right.is-collapsed ~ .mod-root ::-webkit-scrollbar {
   width: 16px;
@@ -152,45 +209,45 @@ body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root ::-webki
 
 /* note icon */
 
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header .view-header-icon,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header .view-header-icon {
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header .view-header-icon,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header .view-header-icon {
   opacity: 0;
   transition: opacity 0.17s ease-in-out;
 }
 
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header .view-header-icon,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-header-icon,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header:hover .view-header-icon,
-body.discordian-writer:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header:hover .view-header-icon {
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header .view-header-icon,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-header-icon,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header:hover .view-header-icon,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header:hover .view-header-icon {
   opacity: 1;
   transition: opacity 0.17s ease-in-out;
 }
 
 /* note title */
 
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header .view-header-title,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header .view-header-title {
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header .view-header-title,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header .view-header-title {
   opacity: 0;
   transition: opacity 0.17s ease-in-out;
 }
 
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header-title,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-header-title,
-body.discordian-writer:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header:hover .view-header-title,
-body.discordian-writer:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header:hover .view-header-title {
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header-title,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header:hover .view-header-title,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header:hover .view-header-title,
+body.discordian-writer-mode:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header:hover .view-header-title {
   opacity: 1;
   transition: opacity 0.17s ease-in-out;
 }
 
 /* note title bottom shadow */
 
-body.discordian-writer .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header::before,
-body.discordian-writer .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header::before {
+body.discordian-writer-mode .workspace-ribbon.mod-right.is-collapsed ~ .mod-root .view-header::before,
+body.discordian-writer-mode .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header::before {
   box-shadow: none !important;
 }
 
 .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
-body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
+body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
 .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header::before,
 .mod-right.is-collapsed ~ .mod-root .view-header::before {
   -webkit-box-shadow: var(--elevation-low) !important;
@@ -198,8 +255,12 @@ body.discordian-writer .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-he
 }
 
 /* no status bar in writer mode */
-body.discordian-writer:not(.hider-status) .status-bar {
+body.discordian-writer-mode:not(.hider-status) .status-bar {
   display: none;
+}
+
+body.discordian-theme .modal.mod-settings .plugin-description {
+  color: var(--text-faint);
 }
 
 body.discordian-theme .modal.mod-settings .plugin-description {
@@ -209,15 +270,26 @@ body.discordian-theme .modal.mod-settings .plugin-description {
 
 body.discordian-theme .modal.mod-settings .plugin-description p {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--text-faint);
 }
 
 body.discordian-theme .modal.mod-settings .plugin-description h3 {
   margin-block-start: 0;
   margin-block-end: 1rem;
+  text-align: left;
   color: var(--text-normal);
 }
 
-body.discordian-theme .modal.mod-settings .plugin-description h4 {
-  color: var(--text-normal);
+body.discordian-theme .modal.mod-settings .plugin-description ~ h4 {
+  color: var(--text-header);
+}
+
+body.discordian-theme .modal.mod-settings .plugin-description.separator {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.discordian-plugin-setting-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
