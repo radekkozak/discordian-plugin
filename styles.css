@@ -35,7 +35,7 @@ body.discordian-hide-titlebar {
   padding-top: 0 !important;
 }
 
-body.discordian-hide-titlebar .workspace-split.mod-left-split .workspace-tab-header-container {
+body.discordian-hide-titlebar:not(.hider-ribbon) .workspace-split.mod-left-split .workspace-tab-header-container {
   padding-left: 24px;
 }
 
@@ -45,11 +45,11 @@ body.discordian-hide-titlebar .workspace-leaf:first-of-type:last-of-type .view-h
 
 /* unhide */
 
-body:not(.discordian-hide-title-bar) .titlebar {
+body:not(.discordian-hide-title-bar):not(.hider-frameless):not(.discordian-writer-mode) .titlebar {
   display: flex !important;
 }
 
-body.discordian-theme:not(.discordian-hide-titlebar):not(.is-fullscreen):not(.hider-frameless) {
+body.discordian-theme:not(.discordian-hide-titlebar):not(.is-fullscreen):not(.hider-frameless):not(.discordian-writer-mode) {
   padding-top: 22px !important;
 }
 
@@ -240,9 +240,12 @@ body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root .vi
 }
 
 /* no status bar in writer mode */
-body.discordian-writer-mode:not(.hider-status) .status-bar {
+body.discordian-writer-mode .status-bar {
   display: none;
 }
+
+/*----------------------------------------------------------------
+PLUGIN STYLES */
 
 body.discordian-theme .modal.mod-settings .plugin-description {
   color: var(--text-faint);
