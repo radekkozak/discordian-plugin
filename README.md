@@ -1,6 +1,4 @@
-# Discordian Plugin for Obsidian
-
-> for tweaking Discordian theme.
+# Discordian Plugin
 
 Discordian Plugin accompanies [Discordian Theme](https://github.com/radekkozak/discordian), allowing you to customize
 it from the Obsidian Settings panel. 
