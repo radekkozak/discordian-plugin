@@ -225,22 +225,6 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         containerEl.createEl('p', {text: '⊷', cls: 'plugin-description separator'});
     }
 
-    addReadableLengthSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
-        const name = 'Readable line length '
-        const setting = new Setting(containerEl)
-            .setName(name + '( = ' + settings.readableLength + 'rem )')
-            .setDesc('Obsidian\'s Readable line length needs to be enabled (default 45 rem)')
-            .addSlider(slider => slider.setLimits(45, 120, 5)
-                .setValue(settings.readableLength)
-                .onChange((value) => {
-                    settings.readableLength = value;
-                    this.plugin.saveData(settings);
-                    this.plugin.refresh();
-                    setting.setName(name + '( = ' + settings.readableLength + 'rem )')
-                })
-            );
-    }
-
     addWriterModeSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
         new Setting(containerEl)
             .setName('Writer mode')
@@ -248,6 +232,19 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
             .addToggle(toggle => toggle.setValue(settings.writerMode)
                 .onChange((value) => {
                     settings.writerMode = value;
+                    this.plugin.saveData(settings);
+                    this.plugin.refresh();
+                })
+            );
+    }
+
+    addFlatAndyModeSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        new Setting(containerEl)
+            .setName('Flat Andy Mode')
+            .setDesc('Flatter notes stacking when in Andy Mode (no elevation shadow)')
+            .addToggle(toggle => toggle.setValue(settings.flatAndyMode)
+                .onChange((value) => {
+                    settings.flatAndyMode = value;
                     this.plugin.saveData(settings);
                     this.plugin.refresh();
                 })
@@ -262,40 +259,47 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
                 .onChange((value) => {
                     settings.paragraphFocusMode = value;
                     this.plugin.saveData(settings);
-                    focusFadeSettings.settingEl.classList.toggle('discordian-plugin-setting-disabled', !value)
+                    setting.settingEl.classList.toggle('discordian-plugin-setting-disabled', !value)
                     this.plugin.refresh();
                 })
             );
 
         const nameFade = 'Paragraph Focus Mode fade '
-        const focusFadeSettings = new Setting(containerEl)
+        const setting = new Setting(containerEl)
             .setName(nameFade + '( = ' + settings.paragraphFocusFade + '% )')
             .setDesc('Amount of fade out when in Paragraph Focus Mode (default 75%)')
             .addSlider(slider => slider.setLimits(25, 90, 5)
                 .setValue(settings.paragraphFocusFade)
                 .onChange((value) => {
                     settings.paragraphFocusFade = value;
-                    focusFadeSettings.settingEl.classList.toggle('discordian-plugin-setting-disabled', !value);
+                    setting.settingEl.classList.toggle('discordian-plugin-setting-disabled', !value);
                     this.plugin.saveData(settings);
                     this.plugin.refresh();
-                    focusFadeSettings.setName(nameFade + '( = ' + settings.paragraphFocusFade + '% )')
+                    setting.setName(nameFade + '( = ' + settings.paragraphFocusFade + '% )')
                 })
             );
 
-        focusFadeSettings.settingEl.classList.toggle('discordian-plugin-setting-disabled', !settings.paragraphFocusMode);
+        setting.settingEl.classList.toggle('discordian-plugin-setting-disabled', !settings.paragraphFocusMode);
     }
 
-    addFlatAndyModeSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
-        new Setting(containerEl)
-            .setName('Flat Andy Mode')
-            .setDesc('Flatter notes stacking when in Andy Mode (no elevation shadow)')
-            .addToggle(toggle => toggle.setValue(settings.flatAndyMode)
+    addReadableLengthSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        const readableLineLength = document.getElementsByClassName('is-readable-line-width')
+
+        const name = 'Readable line length '
+        const setting = new Setting(containerEl)
+            .setName(name + '( = ' + settings.readableLength + 'rem )')
+            .setDesc('Obsidian\'s Readable line length needs to be enabled (default 45 rem)')
+            .addSlider(slider => slider.setLimits(45, 120, 5)
+                .setValue(settings.readableLength)
                 .onChange((value) => {
-                    settings.flatAndyMode = value;
+                    settings.readableLength = value;
                     this.plugin.saveData(settings);
                     this.plugin.refresh();
+                    setting.setName(name + '( = ' + settings.readableLength + 'rem )')
                 })
             );
+
+        setting.settingEl.classList.toggle('discordian-plugin-setting-disabled', readableLineLength.length == 0);
     }
 
     addDarkEnhanceSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {

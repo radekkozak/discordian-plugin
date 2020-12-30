@@ -105,8 +105,8 @@ body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-m
 /*----------------------------------------------------------------
 FLAT ANDY MODE */
 
-body.discordian-flat-andy.plugin-sliding-panes .workspace > .mod-root > .workspace-leaf,
-body.discordian-flat-andy.plugin-sliding-panes .workspace-split.mod-vertical > .workspace-leaf {
+body.discordian-flat-andy-mode.plugin-sliding-panes .workspace > .mod-root > .workspace-leaf,
+body.discordian-flat-andy-mode.plugin-sliding-panes .workspace-split.mod-vertical > .workspace-leaf {
   box-shadow: var(--background-tertiary) -1px 0 !important;
 }
 
