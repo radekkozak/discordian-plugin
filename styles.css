@@ -72,22 +72,14 @@ body.discordian-paragraph-focus .CodeMirror-activeline .CodeMirror-line {
 /*----------------------------------------------------------------
 DARK NOTE HEADERS */
 
-body.discordian-dark-enhance:not(.plugin-sliding-panes) .app-container {
-  /*border-top: 0;*/
+body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .view-header::before {
+  -webkit-box-shadow: var(--elevation-stroke) !important;
+  box-shadow: var(--elevation-stroke) !important;
 }
 
 body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .view-header {
   background-color: var(--background-secondary) !important;
-  height: 32px;
-}
-
-body.discordian-dark-enhance:not(.plugin-sliding-panes) .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
-body.discordian-writer-mode .workspace-ribbon:not(.is-collapsed) ~ .mod-root .view-header::before,
-body.discordian-dark-enhance:not(.plugin-sliding-panes) .workspace-ribbon.mod-left.is-collapsed ~ .mod-root .view-header::before,
-body.discordian-dark-enhance:not(.plugin-sliding-panes) .mod-right.is-collapsed ~ .mod-root .view-header::before,
-body.discordian-dark-enhance:not(.plugin-sliding-panes) .view-header:before {
-  /*-webkit-box-shadow: none !important;
-  box-shadow: none !important;*/
+  height: 30px;
 }
 
 body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header {
