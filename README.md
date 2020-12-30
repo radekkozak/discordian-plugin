@@ -1,4 +1,5 @@
-# Discordian Plugin
+# Discordian Plugin 
+![GitHub release (latest)](https://img.shields.io/badge/dynamic/json?style=for-the-badge&color=6f5dc8&label=Release&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fradekkozak%2Fdiscordian-plugin%2Fmaster%2Fpackage.json)
 
 Discordian Plugin accompanies [Discordian Theme](https://github.com/radekkozak/discordian), allowing you to customize
 it from the Obsidian Settings panel. 
