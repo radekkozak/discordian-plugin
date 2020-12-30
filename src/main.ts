@@ -315,7 +315,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         const name = 'Notes font size '
         const setting = new Setting(containerEl)
             .setName(name + '( = ' + settings.fontSizeNotes + 'px )')
-            .setDesc('Used in editor/preview mode (default 14)')
+            .setDesc('Used in editor/preview mode (default 14px)')
             .addSlider(slider => slider.setLimits(14, 22, 2)
                 .setValue(settings.fontSizeNotes)
                 .onChange((value) => {
@@ -331,7 +331,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         const name = 'File Explorer font size '
         const setting = new Setting(containerEl)
             .setName(name + '( = ' + settings.fontSizeFileExplorer + 'px )')
-            .setDesc('Used in File Explorer (default 14)')
+            .setDesc('Used in File Explorer (default 14px)')
             .addSlider(slider => slider.setLimits(12, 18, 2)
                 .setValue(settings.fontSizeFileExplorer)
                 .onChange((value) => {
