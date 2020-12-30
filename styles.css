@@ -10,13 +10,6 @@ body.discordian-theme .nav-folder.mod-root > .nav-folder-title {
 }
 
 /*----------------------------------------------------------------
-HIDE METADATA BLOCK IN PREVIEW */
-
-body.discordian-hide-metadata .markdown-preview-view .markdown-preview-section .frontmatter-container {
-  display: none !important;
-}
-
-/*----------------------------------------------------------------
 HIDE STATUS BAR */
 
 .discordian-hide-statusbar.theme-dark .status-bar {
