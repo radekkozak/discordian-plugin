@@ -9,7 +9,10 @@
     "build": "rollup --config rollup.config.js"
   },
   "keywords": [
-    "obsidian-md"
+    "obsidian",
+    "obsidian-md",
+    "obsidian-plugin",
+    "discordian"
   ],
   "license": "MIT",
   "devDependencies": {
