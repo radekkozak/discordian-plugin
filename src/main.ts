@@ -35,7 +35,7 @@ export default class DiscordianPlugin extends Plugin {
     addCommands() {
 
         this.addCommand({
-            id: 'toggle-discordian-writer',
+            id: 'toggle-discordian-writer-mode',
             name: 'Toggle Writer Mode',
             callback: () => {
                 this.settings.writerMode = !this.settings.writerMode;
@@ -46,7 +46,7 @@ export default class DiscordianPlugin extends Plugin {
 
         this.addCommand({
             id: 'toggle-flat-andy-mode',
-            name: 'Toggle Flat Andy\'s Mode',
+            name: 'Toggle Flat Andy Mode',
             callback: () => {
                 this.settings.flatAndyMode = !this.settings.flatAndyMode;
                 this.saveData(this.settings);
@@ -95,7 +95,7 @@ export default class DiscordianPlugin extends Plugin {
         const discordianClasses = [
             'discordian-theme',
             'discordian-writer-mode',
-            'discordian-flat-andy',
+            'discordian-flat-andy-mode',
             'discordian-paragraph-focus',
             'discordian-paragraph-focus-fade',
             'discordian-readable-length',
@@ -135,7 +135,7 @@ export default class DiscordianPlugin extends Plugin {
     // update the styles (at the start, or as the result of a settings change)
     updateStyle() {
         document.body.classList.toggle('discordian-writer-mode', this.settings.writerMode);
-        document.body.classList.toggle('discordian-flat-andy', this.settings.flatAndyMode);
+        document.body.classList.toggle('discordian-flat-andy-mode', this.settings.flatAndyMode);
         document.body.classList.toggle('discordian-paragraph-focus', this.settings.paragraphFocusMode);
         document.body.classList.toggle('discordian-hide-vault', this.settings.hideVault);
         document.body.classList.toggle('discordian-hide-titlebar', this.settings.hideTitleBar);
@@ -287,8 +287,8 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
 
     addFlatAndyModeSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
         new Setting(containerEl)
-            .setName('Flat Andy\'s Mode')
-            .setDesc('Flatter notes stacking when in Andy\'s Mode (no elevation shadow)')
+            .setName('Flat Andy Mode')
+            .setDesc('Flatter notes stacking when in Andy Mode (no elevation shadow)')
             .addToggle(toggle => toggle.setValue(settings.flatAndyMode)
                 .onChange((value) => {
                     settings.flatAndyMode = value;

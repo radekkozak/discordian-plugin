@@ -23,7 +23,7 @@ HIDE STATUS BAR */
   display: none;
 }
 
-.theme-dark:not(.hider-status):not(.discordian-hide-statusbar) .status-bar {
+.theme-dark:not(.hider-status):not(.discordian-hide-statusbar):not(.discordian-writer-mode) .status-bar {
   display: flex;
 }
 
@@ -126,24 +126,16 @@ body.discordian-flat-andy.plugin-sliding-panes .workspace-split.mod-vertical > .
 }
 
 /*----------------------------------------------------------------
-WRITER MODE (big credits to @kepano) */
+WRITER MODE */
 
-body.discordian-writer-mode .workspace-leaf.mod-active .view-header {
+body.discordian-writer-mode .mod-left.is-collapsed ~ .mod-root .mod-active .view-header,
+body.discordian-writer-mode .mod-right.is-collapsed ~ .mod-root .mod-active .view-header {
   border-bottom: 0;
-  /*border-bottom: 2px solid var(--discord-light-yellow);*/
 }
 
-/*body.discordian-writer-mode .titlebar {
+body.discordian-writer-mode .titlebar {
   display: none;
-}*/
-
-/*body:not(.discordian-writer-mode):not(.discordian-hide-titlebar) .titlebar {
-  display: flex;
-}*/
-
-/*body.discordian-writer-mode {
-  padding-top: 0 !important;
-}*/
+}
 
 body.discordian-writer-mode .workspace-ribbon.mod-right,
 body.discordian-writer-mode .workspace-ribbon.mod-left {
