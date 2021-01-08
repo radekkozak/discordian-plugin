@@ -35,7 +35,7 @@ body.discordian-hide-titlebar {
   padding-top: 0 !important;
 }
 
-body.discordian-hide-titlebar:not(.hider-ribbon) .workspace-split.mod-left-split .workspace-tab-header-container {
+body.discordian-hide-titlebar:not(.hider-ribbon):not(.mod-windows) .workspace-split.mod-left-split .workspace-tab-header-container {
   padding-left: 24px;
 }
 
@@ -53,9 +53,12 @@ body.discordian-theme:not(.discordian-hide-titlebar):not(.is-fullscreen):not(.hi
   padding-top: 22px !important;
 }
 
-body.discordian-theme:not(.discordian-hide-titlebar):not(.hider-frameless) .workspace-split.mod-left-split .workspace-tab-header-container,
 body.discordian-theme.is-fullscreen .workspace-split.mod-left-split .workspace-tab-header-container {
   padding-left: 0;
+}
+
+body.discordian-theme:not(.discordian-hide-titlebar):not(.hider-frameless) .workspace-split.mod-left-split .workspace-tab-header-container {
+  padding-left: 24px;
 }
 
 /*----------------------------------------------------------------
