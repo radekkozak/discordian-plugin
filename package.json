@@ -1,7 +1,7 @@
 {
   "name": "discordian-plugin",
   "author": "@radekkozak",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Discordian plugin for tweaking Discordian theme",
   "main": "main.js",
   "scripts": {
