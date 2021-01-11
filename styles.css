@@ -73,6 +73,116 @@ body.discordian-paragraph-focus .CodeMirror-activeline .CodeMirror-line {
 }
 
 /*----------------------------------------------------------------
+DISCORD ORIGINAL MARKINGS */
+
+/* bold */
+
+.discordian-original-markings .cm-strong,
+.discordian-original-markings strong {
+  color: var(--text-normal);
+  font-weight: 600;
+}
+
+.discordian-original-markings .cm-formatting-strong {
+  color: var(--text-muted);
+}
+
+/* italics */
+
+.discordian-original-markings .cm-em,
+.discordian-original-markings em {
+  color: var(--text-normal);
+  margin-right: 0.1rem;
+}
+
+.discordian-original-markings .cm-formatting-em {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* blockquote */
+
+.discordian-original-markings blockquote {
+  background-color: unset;
+  color: var(--text-normal) !important;
+  border-left: 4px solid var(--background-accent) !important;
+  border-radius: 0 !important;
+}
+
+.discordian-original-markings blockquote::before {
+  content: none;
+}
+
+.discordian-original-markings .cm-s-obsidian span.cm-formatting-quote.cm-quote {
+  color: var(--text-muted);
+}
+
+.discordian-original-markings .cm-s-obsidian span.cm-quote {
+  color: var(--text-normal);
+}
+
+/* inline code in Editor */
+
+.discordian-original-markings .markdown-preview-view code,
+.discordian-original-markings .cm-s-obsidian span.cm-formatting-code.cm-inline-code,
+.discordian-original-markings .cm-s-obsidian span.cm-inline-code:not(.cm-formatting):not(.cm-hmd-indented-code):not(.obsidian-search-match-highlight) {
+  color: var(--text-normal) !important;
+  background-color: var(--background-secondary);
+  padding: .3rem 0 0.1rem 0;
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  white-space: pre-wrap;
+}
+
+.discordian-original-markings .cm-s-obsidian span.cm-inline-code {
+  font-size: unset;
+}
+
+.discordian-original-markings .cm-s-obsidian span.cm-formatting-code.cm-inline-code {
+  color: var(--text-muted) !important;
+  background-color: var(--background-secondary);
+  border-radius: 3px 0 0 3px;
+  font-weight: 600;
+}
+
+/* inline code in Preview */
+
+.discordian-original-markings .markdown-preview-view code {
+  border-radius: 3px;
+  font-size: 100%;
+  padding: .3rem .3rem .1rem .3rem!important;
+}
+
+.discordian-original-markings .markdown-preview-view pre code {
+  font-size: 100%;
+}
+
+/* codeblocks in Editor */
+
+.discordian-original-markings .cm-s-obsidian div.HyperMD-codeblock-begin-bg {
+  border-top: 1px solid var(--background-secondary-alt);
+}
+
+.discordian-original-markings .cm-s-obsidian div.HyperMD-codeblock-bg {
+  background-color: var(--background-secondary);
+  border-left: 1px solid var(--background-secondary-alt);
+  border-right: 1px solid var(--background-secondary-alt);
+}
+
+.discordian-original-markings .cm-s-obsidian div.HyperMD-codeblock-end-bg {
+  border-bottom: 1px solid var(--background-secondary-alt);
+}
+
+/* codeblocks in Preview */
+
+.discordian-original-markings.theme-dark :not(pre) > code[class*="language-"],
+.discordian-original-markings.theme-dark pre[class*="language-"] {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-secondary-alt);
+}
+
+/*----------------------------------------------------------------
 DARK NOTE HEADERS */
 
 body.discordian-dark-enhance:not(.plugin-sliding-panes):not(.discordian-writer-mode) .view-header::before {

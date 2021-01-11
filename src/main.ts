@@ -1,4 +1,5 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
+import set = Reflect.set;
 
 export default class DiscordianPlugin extends Plugin {
     settings: DiscordianPluginSettings;
@@ -9,6 +10,7 @@ export default class DiscordianPlugin extends Plugin {
             hideVault: true,
             hideTitleBar: true,
             hideStatusBar: true,
+            originalMarkings: false,
             darkEnhance: false,
             fontSizeNotes: 14,
             fontSizeFileExplorer: 14,
@@ -65,6 +67,16 @@ export default class DiscordianPlugin extends Plugin {
         });
 
         this.addCommand({
+            id: 'toggle-discord-original-markings',
+            name: 'Toggle Discord original markings',
+            callback: () => {
+                this.settings.originalMarkings = !this.settings.originalMarkings;
+                this.saveData(this.settings);
+                this.refresh();
+            }
+        });
+
+        this.addCommand({
             id: 'toggle-dark-enhance',
             name: 'Toggle Dark note headers',
             callback: () => {
@@ -101,6 +113,7 @@ export default class DiscordianPlugin extends Plugin {
             'discordian-readable-length',
             'discordian-font-size-notes',
             'discordian-font-size-file-explorer',
+            'discordian-discord-markings',
             'discordian-dark-enhance',
             'discordian-hide-vault',
             'discordian-hide-titlebar',
@@ -140,6 +153,7 @@ export default class DiscordianPlugin extends Plugin {
         document.body.classList.toggle('discordian-hide-vault', this.settings.hideVault);
         document.body.classList.toggle('discordian-hide-titlebar', this.settings.hideTitleBar);
         document.body.classList.toggle('discordian-hide-statusbar', this.settings.hideStatusBar);
+        document.body.classList.toggle('discordian-original-markings', this.settings.originalMarkings);
         document.body.classList.toggle('discordian-dark-enhance', this.settings.darkEnhance);
 
         this.initStyles()
@@ -157,6 +171,7 @@ interface DiscordianPluginSettings {
     hideMetadata: boolean
     hideTitleBar: boolean
     hideStatusBar: boolean
+    originalMarkings: boolean
     darkEnhance: boolean
     fontSizeNotes: number
     fontSizeFileExplorer: number
@@ -189,6 +204,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         this.addFlatAndyModeSettings(containerEl, settings)
         this.addParagraphFocusModeSettings(containerEl, settings)
         this.addReadableLengthSettings(containerEl, settings)
+        this.addOriginalMarkingsSettings(containerEl, settings)
         this.addDarkEnhanceSettings(containerEl, settings)
 
         this.addPluginSettingsSeparator(containerEl)
@@ -300,6 +316,19 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
             );
 
         setting.settingEl.classList.toggle('discordian-plugin-setting-disabled', readableLineLength.length == 0);
+    }
+
+    addOriginalMarkingsSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        new Setting(containerEl)
+            .setName('Discord original markings')
+            .setDesc('This uses Discord original markings such as bold, italics, inline code, quotes and so on')
+            .addToggle(toggle => toggle.setValue(settings.originalMarkings)
+                .onChange((value) => {
+                    settings.originalMarkings = value;
+                    this.plugin.saveData(settings);
+                    this.plugin.refresh();
+                })
+            );
     }
 
     addDarkEnhanceSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
