@@ -11,6 +11,7 @@ export default class DiscordianPlugin extends Plugin {
             hideTitleBar: true,
             hideStatusBar: true,
             originalMarkings: false,
+            relationLinesPreview: true,
             darkEnhance: false,
             fontSizeNotes: 14,
             fontSizeFileExplorer: 14,
@@ -114,6 +115,7 @@ export default class DiscordianPlugin extends Plugin {
             'discordian-font-size-notes',
             'discordian-font-size-file-explorer',
             'discordian-discord-markings',
+            'discordian-discord-rel-preview',
             'discordian-dark-enhance',
             'discordian-hide-vault',
             'discordian-hide-titlebar',
@@ -154,6 +156,7 @@ export default class DiscordianPlugin extends Plugin {
         document.body.classList.toggle('discordian-hide-titlebar', this.settings.hideTitleBar);
         document.body.classList.toggle('discordian-hide-statusbar', this.settings.hideStatusBar);
         document.body.classList.toggle('discordian-original-markings', this.settings.originalMarkings);
+        document.body.classList.toggle('discordian-rel-preview', this.settings.relationLinesPreview);
         document.body.classList.toggle('discordian-dark-enhance', this.settings.darkEnhance);
 
         this.initStyles()
@@ -172,6 +175,7 @@ interface DiscordianPluginSettings {
     hideTitleBar: boolean
     hideStatusBar: boolean
     originalMarkings: boolean
+    relationLinesPreview: boolean
     darkEnhance: boolean
     fontSizeNotes: number
     fontSizeFileExplorer: number
@@ -205,6 +209,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         this.addParagraphFocusModeSettings(containerEl, settings)
         this.addReadableLengthSettings(containerEl, settings)
         this.addOriginalMarkingsSettings(containerEl, settings)
+        this.addRelationLinesPreviewSettings(containerEl, settings)
         this.addDarkEnhanceSettings(containerEl, settings)
 
         this.addPluginSettingsSeparator(containerEl)
@@ -321,7 +326,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
     addOriginalMarkingsSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
         new Setting(containerEl)
             .setName('Discord original markings')
-            .setDesc('This uses Discord original markings such as bold, italics, inline code, quotes and so on')
+            .setDesc('Use Discord original markings such as bold, italics, inline code, quotes and so on')
             .addToggle(toggle => toggle.setValue(settings.originalMarkings)
                 .onChange((value) => {
                     settings.originalMarkings = value;
@@ -334,10 +339,23 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
     addDarkEnhanceSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
         new Setting(containerEl)
             .setName('Dark note headers')
-            .setDesc('Makes note header more prominent')
+            .setDesc('Make note headers more prominent')
             .addToggle(toggle => toggle.setValue(settings.darkEnhance)
                 .onChange((value) => {
                     settings.darkEnhance = value;
+                    this.plugin.saveData(settings);
+                    this.plugin.refresh();
+                })
+            );
+    }
+
+    addRelationLinesPreviewSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        new Setting(containerEl)
+            .setName('Relationship lines')
+            .setDesc('Show lines connecting related bullet points and task lists')
+            .addToggle(toggle => toggle.setValue(settings.relationLinesPreview)
+                .onChange((value) => {
+                    settings.relationLinesPreview = value;
                     this.plugin.saveData(settings);
                     this.plugin.refresh();
                 })
