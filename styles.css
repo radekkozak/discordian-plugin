@@ -45,7 +45,7 @@ body.discordian-hide-titlebar .workspace-leaf:first-of-type:last-of-type .view-h
 
 /* unhide */
 
-body:not(.discordian-hide-title-bar):not(.hider-frameless):not(.discordian-writer-mode) .titlebar {
+body:not(.discordian-hide-titlebar):not(.hider-frameless):not(.discordian-writer-mode) .titlebar {
   display: flex !important;
 }
 
