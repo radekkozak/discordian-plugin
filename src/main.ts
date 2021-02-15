@@ -12,6 +12,7 @@ export default class DiscordianPlugin extends Plugin {
             hideStatusBar: true,
             originalMarkings: false,
             relationLinesPreview: true,
+            prettyTasksEditor: true,
             darkEnhance: false,
             fontSizeNotes: 14,
             fontSizeFileExplorer: 14,
@@ -78,6 +79,26 @@ export default class DiscordianPlugin extends Plugin {
         });
 
         this.addCommand({
+            id: 'toggle-relationship-lines-preview',
+            name: 'Toggle relationship lines in Preview mode',
+            callback: () => {
+                this.settings.relationLinesPreview = !this.settings.relationLinesPreview;
+                this.saveData(this.settings);
+                this.refresh();
+            }
+        });
+
+        this.addCommand({
+            id: 'toggle-pretty-tasks-preview',
+            name: 'Toggle Pretty Task Lists in Editor mode',
+            callback: () => {
+                this.settings.prettyTasksEditor = !this.settings.prettyTasksEditor;
+                this.saveData(this.settings);
+                this.refresh();
+            }
+        });
+
+        this.addCommand({
             id: 'toggle-dark-enhance',
             name: 'Toggle Dark note headers',
             callback: () => {
@@ -115,7 +136,8 @@ export default class DiscordianPlugin extends Plugin {
             'discordian-font-size-notes',
             'discordian-font-size-file-explorer',
             'discordian-discord-markings',
-            'discordian-discord-rel-preview',
+            'discordian-rel-preview',
+            'discordian-pretty-tasks-editor',
             'discordian-dark-enhance',
             'discordian-hide-vault',
             'discordian-hide-titlebar',
@@ -157,6 +179,7 @@ export default class DiscordianPlugin extends Plugin {
         document.body.classList.toggle('discordian-hide-statusbar', this.settings.hideStatusBar);
         document.body.classList.toggle('discordian-original-markings', this.settings.originalMarkings);
         document.body.classList.toggle('discordian-rel-preview', this.settings.relationLinesPreview);
+        document.body.classList.toggle('discordian-pretty-tasks-editor', this.settings.prettyTasksEditor);
         document.body.classList.toggle('discordian-dark-enhance', this.settings.darkEnhance);
 
         this.initStyles()
@@ -176,6 +199,7 @@ interface DiscordianPluginSettings {
     hideStatusBar: boolean
     originalMarkings: boolean
     relationLinesPreview: boolean
+    prettyTasksEditor: boolean
     darkEnhance: boolean
     fontSizeNotes: number
     fontSizeFileExplorer: number
@@ -210,6 +234,7 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
         this.addReadableLengthSettings(containerEl, settings)
         this.addOriginalMarkingsSettings(containerEl, settings)
         this.addRelationLinesPreviewSettings(containerEl, settings)
+        this.addPrettyTasksEditorSettings(containerEl, settings)
         this.addDarkEnhanceSettings(containerEl, settings)
 
         this.addPluginSettingsSeparator(containerEl)
@@ -351,11 +376,24 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
 
     addRelationLinesPreviewSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
         new Setting(containerEl)
-            .setName('Relationship lines')
+            .setName('Relationship lines in Preview mode')
             .setDesc('Show lines connecting related bullet points and task lists')
             .addToggle(toggle => toggle.setValue(settings.relationLinesPreview)
                 .onChange((value) => {
                     settings.relationLinesPreview = value;
+                    this.plugin.saveData(settings);
+                    this.plugin.refresh();
+                })
+            );
+    }
+
+    addPrettyTasksEditorSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        new Setting(containerEl)
+            .setName('Pretty Task Lists in Editor mode')
+            .setDesc("HACKISH : please use both 'Smart indent lists' and 'Use tabs' options for best experience")
+            .addToggle(toggle => toggle.setValue(settings.prettyTasksEditor)
+                .onChange((value) => {
+                    settings.prettyTasksEditor = value;
                     this.plugin.saveData(settings);
                     this.plugin.refresh();
                 })
