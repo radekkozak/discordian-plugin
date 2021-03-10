@@ -1,5 +1,4 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
-import set = Reflect.set;
 
 export default class DiscordianPlugin extends Plugin {
     settings: DiscordianPluginSettings;
@@ -272,9 +271,15 @@ class DiscordianPluginSettingsTab extends PluginSettingTab {
     }
 
     addWriterModeSettings(containerEl: HTMLElement, settings: DiscordianPluginSettings) {
+        let description = new DocumentFragment()
+        description.appendText('Hides visual excess when sidebars are collapsed (accessible by hover)')
+        description.createEl('br')
+        description.appendText('NOTE : this setting will hide Status bar and Title bar ' +
+            'regardless of their individual options')
+
         new Setting(containerEl)
             .setName('Writer mode')
-            .setDesc('Hides visual excess when sidebars are collapsed (accessible by hover) ')
+            .setDesc(description)
             .addToggle(toggle => toggle.setValue(settings.writerMode)
                 .onChange((value) => {
                     settings.writerMode = value;
